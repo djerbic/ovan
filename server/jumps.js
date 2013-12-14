@@ -6,15 +6,23 @@ var
     default_engine_for_all_users: "https://www.google.com/search?q=%s"
   };
 
+/**
+ * every method is returning it's result trough 'done' callback.
+ *  done(err, result);
+ * if err is null, than result contains not-null result object.
+ * this callback will be invoked as a new event (not in current event
+ * evaluation).
+ * moving err to first param enforces caller to check err condition.
+ */
 exports.Jumps = function () {
 
   /**
    * returns current jumps for this user as array of documents.
    * first jump is always (keyword===null), but it may have uid null also.
    */
-  this.list = function (uid) {
+  this.list = function (uid, done) {
     // mock it up for now.
-    return [
+    var sol = [
       {
         uid : null,
         keyword : null,
@@ -34,6 +42,7 @@ exports.Jumps = function () {
         atime : new Date(),
       },
     ];
+    setTimeout(function () {done(null, sol); }, 0);
   };
 
   /*
@@ -45,7 +54,7 @@ exports.Jumps = function () {
    * returned document may have keyword and uid set to null.
    *  -> if uid doesn't exists 
    */
-  this.get = function (uid, keyword) {
+  this.get = function (uid, keyword, done) {
     // SELECT * FROM jumps WHERE
     //  (uid = % OR uid IS NULL) and (keyword = % OR keyword IS NULL);
     //
@@ -62,12 +71,13 @@ exports.Jumps = function () {
     // search engine for all users (uid=NULL,keyword=NULL) and return it.
 
     // mock it for now.
-    return {
+    var sol = {
       uid : null,
       keyword : null,
       url : config.default_engine_for_all_users,
       atime : new Date(),
     };
+    setTimeout(function () {done(null, sol); }, 0);
   };
 
 };
