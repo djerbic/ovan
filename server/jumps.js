@@ -3,7 +3,7 @@
 
 var
   config = {
-    default_engine_for_all_users = "https://www.google.com/search?q=%s"
+    default_engine_for_all_users: "https://www.google.com/search?q=%s"
   };
 
 exports.Jumps = function () {
@@ -24,7 +24,7 @@ exports.Jumps = function () {
       {
         uid : uid,
         keyword : "g",
-        url : config.default_engine_for_all_users
+        url : config.default_engine_for_all_users,
         atime : new Date(),
       },
       {
@@ -65,7 +65,7 @@ exports.Jumps = function () {
     return {
       uid : null,
       keyword : null,
-      url : config.default_engine_for_all_users
+      url : config.default_engine_for_all_users,
       atime : new Date(),
     };
   };
