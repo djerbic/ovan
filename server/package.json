@@ -4,11 +4,8 @@
   "description": "Simple search engine enhancer.",
   "main": "app.js",
   "dependencies": {
-    "express": "~3.4.7"
-  },
-  "repository": {
-    "type": "git",
-    "url": "github.com/djerbic/ovan"
+    "express": "~3.4.7",
+    "mongoose": "~3.8.1"
   },
   "author": "",
   "license": "MIT"
